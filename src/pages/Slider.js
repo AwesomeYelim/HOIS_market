@@ -2,23 +2,15 @@ import React, { useState, useRef, useEffect } from "react";
 import Slide from "../Components/Slide";
 import styled from "styled-components";
 import img from "../Images/깨부숨.png";
+import R_arrow from "../Images/Icon/right_arrow.svg";
+import L_arrow from "../Images/Icon/left_arrow.svg";
 
 const Container = styled.div`
+  position: relative;
   width: 100%;
   margin: auto;
   height: 500px;
   overflow: hidden;
-`;
-
-const Button = styled.div`
-  all: unset;
-  padding: 1em 2em;
-  margin: 2em 2em;
-  color: burlywood;
-  &:hover {
-    background-color: burlywood;
-    color: #fff;
-  }
 `;
 
 const SliderContainer = styled.div`
@@ -33,10 +25,34 @@ const Text = styled.div`
 `;
 
 const Center = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   text-align: center;
 `;
 
 const TotalSlids = 3;
+
+const RButton = styled.img.attrs({
+  src: `${R_arrow}`,
+})`
+  all: unset;
+  padding: 1em 2em;
+  margin: 2em 2em;
+  cursor: pointer;
+`;
+
+const LButton = styled.img.attrs({
+  src: `${L_arrow}`,
+})`
+  all: unset;
+  padding: 1em 2em;
+  margin: 2em 2em;
+  cursor: pointer;
+`;
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -73,11 +89,11 @@ const Slider = () => {
           <Slide img={img} />
           <Slide img={img} />
         </SliderContainer>
+        <Center>
+          <LButton onClick={PrevSlide} />
+          <RButton onClick={NextSlide} />
+        </Center>
       </Container>
-      <Center>
-        <Button onClick={PrevSlide}>Prev</Button>
-        <Button onClick={NextSlide}>Next</Button>
-      </Center>
     </>
   );
 };
