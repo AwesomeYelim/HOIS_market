@@ -31,22 +31,23 @@ const Nav = () => {
 const NavBar = styled.nav`
   display: flex;
   position: relative;
-  width: 1040px;
+  width: 100%;
   height: 70px;
-  margin: 30px auto;
+  margin: 30px 0;
   padding: 10px;
+  boxsizing: border-box;
 `;
 
 const Logo = styled.img.attrs({
   src: `${logo}`,
 })`
-  margin-right: 20px;
+  margin: 0 10px;
 `;
 
 const Search = styled.div`
   position: relative;
   margin-top: 5px;
-  width: 400px;
+  width: 30%;
 `;
 
 const Input = styled.input.attrs({
@@ -65,18 +66,17 @@ const SearchButton = styled.img.attrs({
 })`
   position: absolute;
   z-index: 11;
-  right: 10px;
+  right: 0;
   top: 6px;
   cursor: pointer;
 `;
 
 const RightIcon = styled.div`
   position: absolute;
-  right: 0;
+  right: 15px;
 `;
 
 const RB = styled.button`
-  margin-right: 15px;
   float: left;
   display: flex;
   flex-direction: column;

@@ -10,5 +10,4 @@ export default Slide;
 
 const IMG = styled.img`
   width: 100%;
-  background-color: burlywood;
 `;
