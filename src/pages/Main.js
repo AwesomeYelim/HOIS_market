@@ -11,6 +11,7 @@ function Main() {
         <Nav />
         <Slider />
         <Products />
+        <Products />
       </Wrap>
     </>
   );
