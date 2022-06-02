@@ -5,11 +5,12 @@ import logo from "../Images/Logo-hois.svg";
 import search from "../Images/Icon/search.svg";
 import cart from "../Images/Icon/icon-shopping-cart.svg";
 import user from "../Images/Icon/icon-user.svg";
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
   return (
     <NavBar>
-      <Logo />
+      <Link to='/'><Logo /></Link>
       <Search>
         <Input />
         <SearchButton />
@@ -19,10 +20,12 @@ const Nav = () => {
           <Cart />
           장바구니
         </RB>
-        <RB>
-          <User />
-          마이페이지
-        </RB>
+        <Link to='/login'>
+          <RB>
+            <User />
+            마이페이지
+          </RB>
+        </Link>
       </RightIcon>
     </NavBar>
   );
