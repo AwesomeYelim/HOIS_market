@@ -5,6 +5,51 @@ import img from "../Images/깨부숨.png";
 import R_arrow from "../Images/Icon/right_arrow.svg";
 import L_arrow from "../Images/Icon/left_arrow.svg";
 
+
+const Slider = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideRef = useRef(null);
+
+  const NextSlide = () => {
+    if (currentSlide >= TotalSlids) {
+      setCurrentSlide(0);
+    } else {
+      setCurrentSlide(currentSlide + 1);
+    }
+  };
+
+  const PrevSlide = () => {
+    if (currentSlide === 0) {
+      setCurrentSlide(TotalSlids);
+    } else {
+      setCurrentSlide(currentSlide - 1);
+    }
+  };
+
+  useEffect(() => {
+    slideRef.current.style.transition = "all 0.5s ease-in-out";
+    slideRef.current.style.transform = `translateX(-${currentSlide}00%)`; 
+  }, [currentSlide]);
+
+  return (
+    <>
+      <Container>
+        <Text></Text>
+        <SliderContainer ref={slideRef}>
+          <Slide img={img} />
+          <Slide img={img} />
+          <Slide img={img} />
+          <Slide img={img} />
+        </SliderContainer>
+        <Center>
+          <LButton onClick={PrevSlide} />
+          <RButton onClick={NextSlide} />
+        </Center>
+      </Container>
+    </>
+  );
+};
+
 const Container = styled.div`
   position: relative;
   width: 100%;
@@ -54,48 +99,5 @@ const LButton = styled.img.attrs({
   cursor: pointer;
 `;
 
-const Slider = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const slideRef = useRef(null);
-
-  const NextSlide = () => {
-    if (currentSlide >= TotalSlids) {
-      setCurrentSlide(0);
-    } else {
-      setCurrentSlide(currentSlide + 1);
-    }
-  };
-
-  const PrevSlide = () => {
-    if (currentSlide === 0) {
-      setCurrentSlide(TotalSlids);
-    } else {
-      setCurrentSlide(currentSlide - 1);
-    }
-  };
-
-  useEffect(() => {
-    slideRef.current.style.transition = "all 0.5s ease-in-out";
-    slideRef.current.style.transform = `translateX(-${currentSlide}00%)`; 
-  }, [currentSlide]);
-
-  return (
-    <>
-      <Container>
-        <Text></Text>
-        <SliderContainer ref={slideRef}>
-          <Slide img={img} />
-          <Slide img={img} />
-          <Slide img={img} />
-          <Slide img={img} />
-        </SliderContainer>
-        <Center>
-          <LButton onClick={PrevSlide} />
-          <RButton onClick={NextSlide} />
-        </Center>
-      </Container>
-    </>
-  );
-};
 
 export default Slider;

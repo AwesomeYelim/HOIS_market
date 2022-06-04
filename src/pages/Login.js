@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../Images/Logo-hois.svg";
+import { useState } from "react";
 
+// let seller = useState(0)
 const Login = () => {
   return (
     <>
