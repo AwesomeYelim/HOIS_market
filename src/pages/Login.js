@@ -1,17 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import logo from "../Images/Logo-hois.svg";
-import { useState } from "react";
 
-// let seller = useState(0)
+
+
 const Login = () => {
+  const [color, setColor] = useState("#ccc");
+
+  const onClick = () => {
+    color === "#ccc" ? setColor("#fff") : setColor("#ccc");
+  };
+
+  const Customer = styled.button`
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  background-color: ${color};
+  padding: 10px 50px;
+  font-weight: 500;
+  color: #333;
+`;
+
+let Seller = styled.button`
+cursor: pointer;
+border: 1px solid #ccc;
+border-radius: 5px 5px 0 0;
+padding: 10px 50px;
+background-color: ${color};
+font-weight: 500;
+color: #333;
+`;
+
   return (
     <>
       <Wrap>
         <Logo />
         <div>
-          <Customer>구매회원 로그인</Customer>
-          <Seller>판매회원 로그인</Seller>
+          <Customer onClick={onClick}>구매회원 로그인</Customer>
+          <Seller onClick={onClick}>판매회원 로그인</Seller>
           <Box>
             <input type="text" placeholder="아이디" />
             <input type="password" placeholder="비밀번호" />
@@ -44,25 +71,8 @@ const Logo = styled.img.attrs({
   margin: 100px 50% 20px 50%;
 `;
 
-const Customer = styled.button`
-  cursor: pointer;
-  border: 1px solid #ccc;
-  border-bottom: none;
-  border-radius: 5px 5px 0 0;
-  padding: 10px 50px;
-  font-weight: 500;
-  color: #333;
-`;
 
-const Seller = styled.button`
-  cursor: pointer;
-  border: 1px solid #ccc;
-  border-radius: 5px 5px 0 0;
-  padding: 10px 50px;
-  background-color: #ccc;
-  font-weight: 500;
-  color: #333;
-`;
+
 
 const Box = styled.form`
   width: 100%;
@@ -112,4 +122,6 @@ const FindPassword = styled.span`
   color: #333;
   cursor: pointer;
 `;
+
+
 export default Login;
